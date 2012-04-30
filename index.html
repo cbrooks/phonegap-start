@@ -1,63 +1,72 @@
-<!doctype html>
+<!DOCTYPE html> 
 <html>
-	<head>
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
-		<title>Training App</title>
-		<link rel="stylesheet" href="assets/css/master.css" type="text/css" media="screen" />
+  <head>
+  
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<title>OKDHS Project</title> 
+	<link rel="stylesheet"  href="./content/jqm110/css/themes/default/jquery.mobile-1.1.0.min.css" />
+	<link rel="stylesheet"  href="./content/jqm110/css/themes/default/jquery.mobile.structure-1.1.0.min.css" />
+    <link rel="stylesheet"  href="./content/jqm110/css/themes/default/jquery.mobile.theme-1.1.0.min.css" />
+  
+  </head> 
+  <body>
+  
+    <div data-role="page" class="type-home" id="acronymPage">
+    
+      <div data-role="header" data-theme="b">
+        <h1>Acronym Dictionary</h1>
+        <a href="./ccsMain.html" data-icon="arrow-l" data-iconpos="notext">Back</a>
+      </div>
+    
+	  <div data-role="content">
+		<p>
+		  Type in an acronym to get it's meaning.
+		</p>
 		
-		<script src="phonegap.js" type="text/javascript" charset="utf-8"></script>
+		<div class="content-primary">
 		
-		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/lawnchair/adaptors/DOMStorageAdaptor.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/lawnchair/adaptors/WebkitSQLiteAdaptor.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/lawnchair/Lawnchair.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/dsl.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
-		
-	</head>
-	<body>
- 		<div id="title_bar">Phone<strong>Gap</strong> Training App</div>
-
-		<div id="welcome" class="view">
-		  <div class="app_button" id="map_button">Show My Location</div>
-  	      <div class="app_button" id="settings_button">Settings</div>
-		</div>
-
-		<div id="map" class="view">
-		  <div class="map_image">
-              <img id="static_map" src="assets/img/staticmap.png">
+		  <input type="search" name="search" id="search-basic" value="" data-theme="b"/>
+		  
+		  <div data-role="fieldcontain">
+		    <ul id="suggestions" data-role="listview" data-inset="true"></ul>
 		  </div>
-		  <p>This is where you are</p>
-		  <div class="app_button" id="welcome_button">Go Back</div>
-		</div>
+		  
+		</div><!-- /.content-primary -->
 
-		<div id="settings" class="view">
-		  <form id="settings_form">
-		    <fieldset>
-		      <legend>Map Type</legend>
-			  <input type="radio" name="map" value="roadmap" checked>Road Map<br/>
-		      <input type="radio" name="map" value="satellite">Satellite<br/>
-		      <input type="radio" name="map" value="terrain">Terrain<br/>
-		      <input type="radio" name="map" value="hybrid">Hybrid<br/>
-		    </fieldset>
-		    <fieldset>
-		      <legend>Zoom Level</legend>
-  		      <input type="radio" name="zoom" value="10">Super Far<br/>
-  		      <input type="radio" name="zoom" value="12">Far<br/>
-  		      <input type="radio" name="zoom" value="15" checked>Normal<br/>
-  		      <input type="radio" name="zoom" value="18">Close<br/>
-  		      <input type="radio" name="zoom" value="20">Super Close<br/>
-  		     </fieldset>
-		      <button id="save_button">Save</button>
-	      </form>
-		</div>
+	  </div><!-- /content -->
+	  
+	  <div data-role="footer" data-theme="b">	
+	    <div data-role="navbar">
+		  <ul>
+		    <li><a href="../home/home.html" data-icon="home" data-iconpos="notext" data-theme="e">home</a></li>
+		  </ul>
+	    </div><!-- /navbar -->
+	    <h4>&copy; 2012 OKDHS</h4>
+      </div><!-- /footer -->
 
-	</body>
+    </div><!-- /page .type-home -->
+    
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="./content/jqm110/js/jquery.js"></script>
+    <script src="./content/jqm110/js/jquery.mobile-1.1.0.min.js"></script>
+    <script src="./content/jqm110/js/add-ons/jqm.autoComplete-1.3.js"></script>
+    
+    <script>
+		$("#acronymPage").bind("pageshow", function(e) {
+
+     			 autocompleteData = $.parseJSON('[{"value":"1.0","label":"Alabama"},{"value":"2.0","label":"Alaska"},{"value":"3.0","label":"American Samoa"},{"value":"4.0","label":"Arizona"},{"value":"5.0","label":"Arkansas"},{"value":"6.0","label":"California"},{"value":"7.0","label":"Colorado"},{"value":"8.0","label":"Connecticut"},{"value":"9.0","label":"Delaware"},{"value":"10.0","label":"District of Columbia"},{"value":"11.0","label":"Florida"},{"value":"12.0","label":"Georgia"},{"value":"13.0","label":"Guam"},{"value":"14.0","label":"Hawaii"},{"value":"15.0","label":"Idaho"},{"value":"16.0","label":"Illinois"},{"value":"17.0","label":"Indiana"},{"value":"18.0","label":"Iowa"},{"value":"19.0","label":"Kansas"},{"value":"20.0","label":"Kentucky"},{"value":"21.0","label":"Louisiana"},{"value":"22.0","label":"Maine"},{"value":"23.0","label":"Maryland"},{"value":"24.0","label":"Massachusetts"},{"value":"25.0","label":"Michigan"},{"value":"26.0","label":"Minnesota"},{"value":"27.0","label":"Mississippi"},{"value":"28.0","label":"Missouri"},{"value":"29.0","label":"Montana"},{"value":"30.0","label":"Nebraska"},{"value":"31.0","label":"Nevada"},{"value":"32.0","label":"New Hampshire"},{"value":"33.0","label":"New Jersey"},{"value":"34.0","label":"New Mexico"},{"value":"35.0","label":"New York"},{"value":"36.0","label":"North Carolina"},{"value":"37.0","label":"North Dakota"},{"value":"38.0","label":"Northern Marianas Islands"},{"value":"39.0","label":"Ohio"},{"value":"#oklahoma","label":"Oklahoma"},{"value":"41.0","label":"Oregon"},{"value":"42.0","label":"Pennsylvania"},{"value":"43.0","label":"Puerto Rico"},{"value":"44.0","label":"Rhode Island"},{"value":"45.0","label":"South Carolina"},{"value":"46.0","label":"South Dakota"},{"value":"47.0","label":"Tennessee"},{"value":"48.0","label":"Texas"},{"value":"49.0","label":"Utah"},{"value":"50.0","label":"Vermont"},{"value":"52.0","label":"Virgin Islands"},{"value":"51.0","label":"Virginia"},{"value":"53.0","label":"Washington"},{"value":"54.0","label":"West Virginia"},{"value":"55.0","label":"Wisconsin"},{"value":"56.0","label":"Wyoming"}]');
+
+			$("#search-basic").autocomplete({
+				target: $('#suggestions'),
+				source: autocompleteData,
+				link: './target.html?',
+				minLength: 1
+			});
+		});
+	</script>
+
+  </body>
 </html>

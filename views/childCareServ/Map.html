@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBZzsTWupo784irqyYd579hYjoQ2RNh8fU&sensor=true">
+    </script>
+    <script type="text/javascript">
+    	var geocoder;
+  	  	var map;
+  	  	var address = "16301 Del Mar Dr., Edmond, OK";
+  		function initialize() {
+    		geocoder = new google.maps.Geocoder();
+    		var latlng = new google.maps.LatLng(-34.397, 150.644);
+    		var myOptions = {
+      			zoom: 8,
+      			center: latlng,
+      			mapTypeId: google.maps.MapTypeId.ROADMAP
+    		}
+    		map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+    		if (geocoder) {
+    			geocoder.geocode( { 'address': address}, function(results, status) {
+        		if (status == google.maps.GeocoderStatus.OK) {
+          			if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+          			map.setCenter(results[0].geometry.location);
+          			
+          			var infowindow = new google.maps.InfoWindow(
+                		{ content: '<b>'+address+'</b>',
+                  		  size: new google.maps.Size(150,50)
+                	});
+    
+            		var marker = new google.maps.Marker({
+                		position: results[0].geometry.location,
+                		map: map, 
+                		title: address,
+                		clickable: true,
+            			icon: 'http://google-maps-icons.googlecode.com/files/motorcycle.png'
+            		});
+            		google.maps.event.addListener(marker, 'click', function() {
+                		infowindow.open(map,marker);
+            		});
+            	  } else {
+            		alert("No results found");
+            	  }
+            	} else {
+          		  alert("Geocode was not successful for the following reason: " + status);
+        		}
+        	  });
+    		}
+ 	 	}
+</script>
+  </head>
+<body onload="initialize()">
+ <div id="map_canvas" style="width: 320px; height: 480px;"></div>
+</body>
+</html>
